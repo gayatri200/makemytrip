@@ -10,7 +10,7 @@ public class Bus {
     @GetMapping("/Bus")
 
     public String getData() {
-        System.out.println("develop B XYZ");
+        System.out.println("develop Chetana");
         return  "Please book your bus tickets  from mmt kindly book ticket for" ;
 
     }
