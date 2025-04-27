@@ -11,7 +11,7 @@ public class Bus {
 
     public String getData() {
         System.out.println("develop B XYZ");
-        return  "Please book your bus tickets  from mmt kindly book ticket for New Delhi" ;
+        return  "Please book your bus tickets  from mmt kindly book ticket for" ;
 
     }
 
