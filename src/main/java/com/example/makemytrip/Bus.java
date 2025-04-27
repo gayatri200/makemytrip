@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class Bus {
 
     @GetMapping("/Bus")
-    public String getData() {return  "Please book your bus tickets  from mmt kindly book ticket for New Delhi" ;
+
+    public String getData() {
+        System.out.println("develop A");
+        return  "Please book your bus tickets  from mmt kindly book ticket for New Delhi" ;
 
     }
 
