@@ -13,7 +13,7 @@ public class Bus {
 =======
 
     public String getData() {
-        System.out.println("develop A");
+        System.out.println("develop A XYZ");
         return  "Please book your bus tickets  from mmt kindly book ticket for New Delhi" ;
 >>>>>>> 06a8086ebea8f9845b5a086dac53ef536a711947
 
