@@ -11,7 +11,7 @@ public class Exchange {
 
     public String getData() {
 
-        return  "Exchange Money" ;
+        return  "Exchange Money 100$" ;
 
     }
 
