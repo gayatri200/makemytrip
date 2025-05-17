@@ -10,6 +10,7 @@ public class Exchange {
     @GetMapping("/Exchange")
 
     public String getData() {
+        System.out.println("develop by Gayatri");
 
         return  "Exchange Money 100$ in doller  $$" ;
 
