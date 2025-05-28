@@ -3,7 +3,7 @@ pipeline {
     agent {label:java}
 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '4', artifactNumToKeepStr: '4'))
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
 
     tools {
