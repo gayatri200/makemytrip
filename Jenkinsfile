@@ -1,6 +1,6 @@
 pipeline {
 
-    agent {label:java}
+    agent { label 'java' }
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
