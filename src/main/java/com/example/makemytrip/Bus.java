@@ -14,7 +14,7 @@ public class Bus {
         System.out.println("develop Chetana");
 
         System.out.println("develop Gayatri");
-        return  "Please book your bus tickets  from mmt kindly book ticket for" ;
+        return  "Please book your bus tickets  from mmt kindly book ticket for easy travel" ;
 
     }
 

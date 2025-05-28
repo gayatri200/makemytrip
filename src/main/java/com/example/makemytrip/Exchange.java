@@ -12,7 +12,7 @@ public class Exchange {
     public String getData() {
         System.out.println("develop by Gayatri");
 
-        return  "Exchange Money 100$ in doller  $$" ;
+        return  "Exchange Money 100$ in doller  $$$" ;
 
     }
 
