@@ -48,7 +48,11 @@ pipeline {
         stage('Docker Image Scanning') {
             steps {
                 echo 'Scanning Docker Image with Trivy...'
-                sh 'trivy image gayatri085/climage:latest || echo "Trivy scan failed or not installed"'
+                sh '''
+                docker run --rm \
+                  -v /var/run/docker.sock:/var/run/docker.sock \
+                  aquasec/trivy:latest image gayatri085/climage:latest || echo "Trivy scan failed"
+                '''
                 echo 'Docker Image Scanning Completed!'
             }
         }
