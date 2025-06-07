@@ -5,13 +5,13 @@ FROM tomcat:9.0.82-1dk21-temurin
 LABEL maintainer="gayatri.mali@example.com"
 
 # Remove default ROOT app (optional, keeps container clean)
-RUN-rf /usr/local/tomcat/webapps/ROOT
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 # Create a user for running the application
 RUN useradd -m makemytrip
 
 #Copy your JAR file into the webapps directory
-COPY./target/makemytrip*.jar/usr/local/tomcat/webapps/
+COPY ./target/makemytrip*.jar /usr/local/tomcat/webapps/
 
 #Expose the default Tomcat port
 EXPOSE 8080
