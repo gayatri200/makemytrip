@@ -1,5 +1,5 @@
 #Use official Tomcat 9 with Java 21 pre-installed
-FROM tomcat:9.0.82-1dk21-temurin
+FROM tomcat:9.0.82-jdk21-temurin
 
 #Set maintainer label (optional but good practice)
 LABEL maintainer="gayatri.mali@example.com"
