@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo 'Building Docker Image with Tags...'
                 sh '''
-                    docker build -t gayatri085/makemytrip:latest .
+                    docker build -t gayatri085/makemytrip:v21 .
                 '''
                 echo 'Docker Image Build Completed!'
             }
