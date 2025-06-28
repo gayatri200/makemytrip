@@ -5,23 +5,16 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
     }
 
-    tools {
-        maven 'mvn_3.9.9'  // Make sure this Maven tool is defined in Jenkins global tools $
+    parameters {
+        string(name: 'maven_version', defaultValue: '3.9.9', description: 'Enter Maven version')
     }
-    stages {
-        stage("Code Compilation") {
-            steps {
-                echo "Code Compilation"
-                sh 'mvn clean compile'
-                echo 'Code Compilation Completed Successfully!'
-            }
-        }
 
-        stage("Code Package") {
+    stages {
+        stage("Download Maven version") {
             steps {
-                echo "Code Package"
-                sh 'mvn clean package'
-                echo 'Code Package Completed Successfully!'
+                echo "Maven version: ${params.maven_version}"
+                sh 'mvn clean compile'
+                echo 'Maven version fetched successfully!'
             }
         }
     }
