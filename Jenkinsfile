@@ -1,17 +1,24 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Check Java version') {
-            steps {
-                sh 'java --version'
-            }
-        }
+    stage("Code Compilation")
+    	{
+         steps
+         {
+          echo "Code Compilation"
+    	  sh 'mvn clean compile'
+          echo 'Code Compilation Completed Successfully!'
 
-        stage('Check git version') {
-            steps {
-                sh 'git --version'
-            }
-        }
+         }
+    stage("Code Package")
+    {
+    steps
+    {
+    echo "COde Package";
+    sh 'mvn clean package'
+    echo 'COde package Successfully'
+    }
+    }
+
     }
 }
