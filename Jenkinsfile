@@ -4,6 +4,9 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
     }
+    tools {
+            maven 'Maven_3.9.9'  // <-- Matches the name you defined above
+        }
 
     parameters {
         string(name: 'maven_version', defaultValue: '3.9.9', description: 'Enter Maven version')
