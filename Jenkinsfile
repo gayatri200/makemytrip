@@ -5,7 +5,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
     }
     tools {
-            maven 'Maven_3.9.9'  // <-- Matches the name you defined above
+            maven 'mvn_3.9.9'  // Make sure this Maven tool is defined in Jenkins global tools $
         }
 
     parameters {
