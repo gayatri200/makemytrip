@@ -65,7 +65,34 @@ pipeline {
             }
         }
 
+        stage('Push Docker Image to Amazon ECR') {
+            steps {
+                script {
+                    withDockerRegistry([credentialsId: 'ecr:ap-south-1:ecr-credentials', url: "https://965147600467.dkr.ecr.ap-south-1.amazonaws.com"]) {
+                        echo 'Tagging and Pushing Docker Image to ECR...'
+                        sh '''
+                            docker images
+                            docker tag makemytrip:latest 965147600467.dkr.ecr.ap-south-1.amazonaws.com/makemytrip:latest
+                            docker push 965147600467.dkr.ecr.ap-south-1.amazonaws.com/makemytrip:latest
+                        '''
+                        echo 'Docker Image Pushed to Amazon ECR Successfully!'
+                    }
+                }
+            }
+        }
 
+        stage('Clean Up Local Docker Images') {
+            steps {
+                echo 'Cleaning Up Local Docker Images...'
+                sh '''
+                    docker rmi gayatri085/climage:latest || echo "Image not found or already deleted"
+                    docker rmi makemytrip:latest || echo "Image not found or already deleted"
+                    docker rmi 965147600467.dkr.ecr.ap-south-1.amazonaws.com/makemytrip:latest || echo "Image not found or already deleted"
+                    docker image prune -f
+                '''
+                echo 'Local Docker Images Cleaned Up Successfully!'
+            }
+        }
     }
 
     post {
