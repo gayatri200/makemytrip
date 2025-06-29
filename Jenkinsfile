@@ -68,7 +68,7 @@ pipeline {
         stage('Push Docker Image to Amazon ECR') {
             steps {
                 script {
-                    docker.withDockerRegistry([credentialsId: 'ecr:ap-south-1:aws-credentials-id', url: "https://965147600467.dkr.ecr.ap-south-1.amazonaws.com"]) {
+                    withDockerRegistry([credentialsId: 'ecr:ap-south-1:aws-credentials-id', url: "https://965147600467.dkr.ecr.ap-south-1.amazonaws.com"]) {
                         echo 'Tagging and Pushing Docker Image to ECR...'
                         sh '''
                             docker images
