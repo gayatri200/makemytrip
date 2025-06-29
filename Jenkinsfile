@@ -1,13 +1,13 @@
 pipeline {
-
-    agent any
+    // agent { label 'jenkinsslave2' }  // Old agent - commented
+    agent any  // New agent
 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
 
     tools {
-        maven 'mvn_3.9.9'  // Make sure this Maven tool is defined in Jenkins global tools $
+        maven 'mvn_3.9.9'
     }
 
     stages {
@@ -34,6 +34,38 @@ pipeline {
                 echo 'WAR Artifact Created Successfully!'
             }
         }
+
+        stage('Build & Tag Docker Image') {
+            steps {
+                echo 'Building Docker Image with Tags...'
+                sh '''
+                    docker build -t gayatri085/makemytrip:latest -t makemytrip:latest .
+                '''
+                echo 'Docker Image Build Completed!'
+            }
+        }
+
+        stage('Docker Image Scanning') {
+            steps {
+                echo 'Scanning Docker Image with Trivy...'
+                echo 'Docker Image Scanning Completed!'
+            }
+        }
+
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]) {
+                        sh 'docker login docker.io -u gayatri085 -p $dockerhubCred'
+                        echo 'Pushing Docker Image to Docker Hub...'
+                        sh 'docker push gayatri085/makemytrip:latest'
+                        echo 'Docker Image Pushed to Docker Hub Successfully!'
+                    }
+                }
+            }
+        }
+
+
     }
 
     post {
