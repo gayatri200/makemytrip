@@ -84,7 +84,7 @@ pipeline {
            steps{
              script{
                   withCredentials([UsernamePassword(credentialsId: 'nexuscred',usernameVariable:'USERNAME',passwordVariable:'PASSWORD')]
-                  sh 'docker login http://13.126.147.229:8085/repository/dokerhostedrepo -u admin -p ${PASSWORD}'
+                  sh 'docker login http://13.126.147.229:8085/repository/makemytrip -u admin -p ${PASSWORD}'
                   echo "Push image to nexus : In Progress"
                   sh 'docker tag makemytrip 13.126.147.229:8085/makemytrip:latest'
                   sh 'socer push 13.126.147.229:8085/makemytrip'
