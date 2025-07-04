@@ -65,7 +65,7 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image to Amazon ECR') {
+       /* stage('Push Docker Image to Amazon ECR') {
             steps {
                 script {
                     withDockerRegistry([credentialsId: 'ecr:ap-south-1:ecr-credentials', url: "https://965147600467.dkr.ecr.ap-south-1.amazonaws.com"]) {
@@ -79,7 +79,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage('Upload the docker image to Nexus') {
             steps {
                 script {
